@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @user.first_name %> et bienvenue chez nous !</h1>
+    <p>
+      Tu as soumis ta participation à un évènement en utilisant l'e-mail suivant : <%= @user.email %>.
+    </p>
+    <p>
+      Pour accéder à ton espace, connecte-toi via : <%= @url %>.
+    </p>
+    <p> À très vite sur https://beach-golf.herokuapp.com/ !
+  </body>
+</html>
