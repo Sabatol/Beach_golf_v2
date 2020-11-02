@@ -17,12 +17,12 @@ events = []
 participations = []
 
 30.times do 
-  user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: 10), email: Faker::Internet.email)
+  user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: 10), email: Faker::Internet.email(domain: '@yopmail.com'))
   users << user
 end
 
 20.times do 
-  event = Event.create(start_date: Faker::Time.forward(days: 100, format: :long), title: Faker::Games::Pokemon.name, description: Faker::Quote.famous_last_words, price: Faker::Number.between(from: 1, to: 1000), location: Faker::Address.city, user: users.sample, duration: (Faker::Number.within(range: 1..50) * 5))
+  event = Event.create(start_date: Faker::Time.forward(days: 100, format: :long), title: " #{Faker::Games::Pokemon.name} ", description: Faker::Lorem.characters(number: 25), price: Faker::Number.between(from: 1, to: 1000), location: Faker::Address.city, user: users.sample, duration: (Faker::Number.within(range: 1..50) * 5))
   events << event
 end
 
