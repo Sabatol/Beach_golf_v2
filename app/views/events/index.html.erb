@@ -1,2 +1,26 @@
-<h1>Events#index</h1>
-<p>blabalbala</p>
+<div class="jumbotron">
+  <h1 class="display-4">Bienvenue sur Beach-golf France !</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+</div>
+  <!-- Evènements_liste -->
+<% @events.each do |event|%>
+  <div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= event.title %></h5>
+      <p class="card-text"><%=event.description%></p>
+      <p class="card-text"><%=event.price%> €</p>
+      <p class="card-text"><%=event.location%></p>
+      <p class="card-text">Soumis le : <%=event.start_date.strftime('%d/%m/%Y %H:%M')%></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+      <%= link_to "#{event.participations.count} participants", event_path(event.id), :class =>"btn btn-outline-info"  %>
+      <br/>
+    </div>
+  </div>
+<%end%>
+

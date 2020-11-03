@@ -1,2 +1,16 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+                <div class="card">
+                  <img src="..." class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= @event.title %></h5>
+        
+                    <p class="card-text"><%=@event.description%></p>
+                    <p class="card-text"><%=@event.price%> €</p>
+                    <p class="card-text"><%=@event.location%></p>
+                    <p class="card-text">Soumis le : <%=@event.start_date.strftime('%d/%m/%Y %H:%M')%></p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted">Pour joindre le créateur de l'évènement : <%=@event.user.email%></small>
+                    <%= link_to "#{@event.participations.count} participants", event_path(@event.id), :class =>"btn btn-outline-info"  %>
+                    <br/>
+                  </div>
+                </div>

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   after_create :welcome_send
 
+  has_many :participations
   has_many :events, through: :participations
 
   def welcome_send
