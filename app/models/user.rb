@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   after_create :welcome_send
 
+  has_many :events 
   has_many :participations
-  has_many :events, through: :participations
+  has_many :participated_events, through: :participations, source: :event
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now

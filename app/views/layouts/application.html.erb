@@ -34,16 +34,16 @@
 
             <div class="d-flex justify-content-end">
               <% if current_user %>
-                <li class="nav-item">
-                <%= link_to "Mon profil", user_path(current_user.id), :class =>"btn btn-primary" %>
-                </li>
-                <li class="nav-item">
-                <%= link_to "Editer mon profil", edit_user_path(current_user.id), :class =>"btn btn-primary" %>
-                </li>
-                <li class="nav-item">
-                <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, data:{confirm: "Tu veux vraiment te déconnecter ?"}, :class =>"btn btn-danger" %>
-                </li>      
-
+                <div class="dropdown">
+                  <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Mon profil
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <%= link_to "Mon profil", user_path(current_user.id), :class =>"dropdown-item" %>
+                    <%= link_to "Editer mon profil", edit_user_path(current_user.id), :class =>"dropdown-item" %>
+                    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, data:{confirm: "Tu veux vraiment te déconnecter ?"}, :class =>"dropdown-item" %>
+                  </div>
+                </div>
               <% else %>
                 <div class="dropdown">
                   <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

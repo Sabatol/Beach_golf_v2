@@ -4,9 +4,12 @@ class EventsController < ApplicationController
   end
 
   def create
-    def create
-      @event = Event.create('title' => params[:title], 'duration'=> params[:duration], 'start_date'=> params[:start_date], 'price'=> params[:price], 'location'=> params[:location], 'description'=> params[:description], 'user' => current_user)
-    end 
+    @event = Event.new(title: params[:title], duration: params[:duration], start_date: params[:start_date], price: params[:price], location: params[:location], description: params[:description], user: current_user)
+    if @event.save 
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   # def destroy
