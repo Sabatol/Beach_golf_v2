@@ -17,7 +17,7 @@ events = []
 participations = []
 
 3.times do 
-  user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: 10), email: Faker::Internet.email(domain: '@yopmail.com'), password: "fifou")
+  user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: 10), email: Faker::Internet.email(domain: '@yopmail.com'), password: "fifouxxx")
   users << user
 end
 
