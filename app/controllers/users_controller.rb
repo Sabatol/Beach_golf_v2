@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :is_right_user
+
   def new
   end
 
@@ -11,5 +14,18 @@ class UsersController < ApplicationController
   end
 
   def index
+  end
+
+  def edit
+    
+  end
+  def update
+    post_params = params.require(:user).permit(:first_name, :last_name, :description, :email, :password)
+    current_user.update(post_params)
+    if current_user.update(post_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 end
