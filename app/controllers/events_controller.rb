@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(title: params[:title], duration: params[:duration], start_date: params[:start_date], price: params[:price], location: params[:location], description: params[:description], user: current_user)
     if @event.save 
-      redirect_to root_path
+      redirect_to event_path(@event.id)
     else
       render :new
     end
@@ -18,6 +18,7 @@ class EventsController < ApplicationController
   def show
     id = params[:id]
     @event = Event.find(id)
+    @end_date = @event.start_date + @event.duration*60
   end
 
   def index
