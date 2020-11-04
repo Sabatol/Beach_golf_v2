@@ -1,17 +1,18 @@
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title"><%= @event.title %></h5>
-        
-                    <p class="card-text">Description : <%=@event.description%></p>
-                    <p class="card-text">Prix : <%=@event.price%> €</p>
-                    <p class="card-text">Location : <%=@event.location%></p>
-                    <p class="card-text"><%=@event.participations.count%> participant(s)</p>
-                    <p class="card-text">Début de l'évènement : <%=@event.start_date.strftime('%d/%m/%Y %H:%M')%></p>
-                    <p class="card-text">Fin de l'évènement : <%=@end_date.strftime('%d/%m/%Y %H:%M')%></p>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">Pour joindre le créateur de l'évènement, contactez  <%=@event.user.first_name%> <%=@event.user.last_name%> via <%=@event.user.email%></small>
-                    <br/>
-                  </div>
-                </div>
+      <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= @event.title %></h5>
+
+          <p class="card-text">Description : <%=@event.description%></p>
+          <p class="card-text">Prix : <%=@event.price%> €</p>
+          <p class="card-text">Location : <%=@event.location%></p>
+          <p class="card-text"><%=@event.participations.count%> participant(s)</p>
+          <p class="card-text">Début de l'évènement : <%=@event.start_date.strftime('%d/%m/%Y %H:%M')%></p>
+          <p class="card-text">Fin de l'évènement : <%=@end_date.strftime('%d/%m/%Y %H:%M')%></p>
+        </div>
+        <div class="card-footer">
+        <%= link_to "Participer", new_event_charge_path(params[:id]), :class =>"btn btn-outline-warning"  %> <br/>
+          <small class="text-muted">Pour joindre le créateur de l'évènement, contactez  <%=@event.user.first_name%> <%=@event.user.last_name%> via <%=@event.user.email%></small>
+          <br/>
+        </div>
+      </div>
