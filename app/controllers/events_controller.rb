@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     if @event.save 
       redirect_to event_path(@event.id)
     else
-      render :new
+      redirect_to new_event_path
     end
   end
 

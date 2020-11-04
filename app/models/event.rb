@@ -15,11 +15,14 @@ class Event < ApplicationRecord
   has_many :users, through: :participations
 
   def is_future?
-    start_date > Time.now
+    if start_date.present?
+      start_date > Time.now
+    end
   end
 
   def is_multiple_5
-    errors.add(:start_date, "shouldn't be 0 and shouldn't be multiple of 5") unless
-      duration % 5 == 0 && duration > 0
+    if duration.present?
+        duration % 5 == 0 && duration > 0
+    end
   end
 end
