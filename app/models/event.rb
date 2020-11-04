@@ -8,7 +8,7 @@ class Event < ApplicationRecord
   validates :duration, presence: true, numericality: {only_integer: true}
   validates :title, presence: true, length: { in: 5..140 }
   validates :description, presence: true, length: { in: 20..1000 }
-  validates :price, presence: true, inclusion: 1..1000
+  validates :price, presence: true, inclusion: 0..1000
 
   belongs_to :user
   has_many :participations
