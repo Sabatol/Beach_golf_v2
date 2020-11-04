@@ -11,8 +11,12 @@
           <p class="card-text">Fin de l'évènement : <%=@end_date.strftime('%d/%m/%Y %H:%M')%></p>
         </div>
         <div class="card-footer">
-        <%= link_to "Participer", new_event_charge_path(params[:id]), :class =>"btn btn-outline-warning"  %> <br/>
           <small class="text-muted">Pour joindre le créateur de l'évènement, contactez  <%=@event.user.first_name%> <%=@event.user.last_name%> via <%=@event.user.email%></small>
+          <% unless  @participation %>
+            <%= link_to "Participer", new_event_charge_path(params[:id]), :class =>"btn btn-outline-warning"  %> <br/>
+          <% else %>
+            Vous êtes inscrit(e) à cet évènement ! 
+          <% end %>
           <br/>
         </div>
       </div>

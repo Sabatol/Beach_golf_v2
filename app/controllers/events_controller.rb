@@ -19,6 +19,7 @@ class EventsController < ApplicationController
     id = params[:id]
     @event = Event.find(id)
     @end_date = @event.start_date + @event.duration*60
+    @participation = @event.participations.find_by(user_id: current_user.id, event_id: @event.id)
   end
 
   def index
