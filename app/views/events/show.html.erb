@@ -21,6 +21,8 @@
       <%= link_to "Gérer mon évènement", event_participations_path(params[:id]), :class =>"btn btn-outline-warning"  %> <br/>
     <% elsif @participation %>
       Vous êtes inscrit(e) à cet évènement ! 
+    <% elsif is_free?(@event) %>
+      <%= link_to "Participer gratuitement",  event_participations_path(event_id: params[:id]), :method =>'POST', :class =>"btn btn-outline-warning"  %> <br/>
     <% else %>
       <%= link_to "Participer", new_event_charge_path(params[:id]), :class =>"btn btn-outline-warning"  %> <br/>
     <% end %>
