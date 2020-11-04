@@ -2,8 +2,9 @@ class ChargesController < ApplicationController
   def new
     @event = Event.find_by(id: params[:event_id])
     @price = @event.price
-    unless Participation.find_by(user_id: current_user.id, event_id: @event.id) == nil
-      flash[:alert] = "Vous avez déjà souscris une participation à l'évènement !" #Ne fonctionne pas
+    participation = Participation.find_by(user_id: current_user.id, event_id: @event.id)
+    if participation
+      flash[:alert] = "Vous avez déjà souscris une participation à l'évènement !"
       redirect_to event_path(@event.id)
     end
   end
