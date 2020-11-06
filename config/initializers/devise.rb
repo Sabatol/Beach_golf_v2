@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'bf2e5d5610ce35fac7b3fa98bc8c1645148df6fd5dfeb3cc469892ec4092d15c72aaae0383de4478801d21580ab1eb3c85f64fb7aad8decc65b971edc5114c77'
+  # config.secret_key = 'e46b7f1ab733f285f5d4a50c14e63895e595d2216da14bd599bdb88b525eb65126e921b31593a5a7aff597f262e6b8cf2c6ed8587783f466f7672f6aff240403'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'machin@yopmail.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '809df92307ae32379b1b51035fb71c183c345d34684f94614726aae1ebef09319093ac9415963774bcf6cdc363bbe90c6d92f8b1cc624f4ba5451ad027efee83'
+  # config.pepper = '661e0d6126191f9a920c1a5dc0ac6235863dc1df2ae788d9e86f592b56ce72e6ed3a574ef95d4ad1f50109b1c6dd6478c93b192a21dd9aaa7e142c3b96d6672c'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -308,6 +308,4 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-  config.secret_key = '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' if Rails.env == 'production'
-
 end
