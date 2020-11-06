@@ -37,7 +37,7 @@
       <% elsif @participation %>
         Vous êtes inscrit(e) à cet évènement ! 
       
-      <% elsif is_free?(@event) %>
+      <% elsif @event.price == 0 %>
         <%= link_to "Participer gratuitement",  event_participations_path(event_id: params[:id]), :method =>'POST', :class =>"btn btn-outline-warning"  %> <br/>
       
       <% else %>

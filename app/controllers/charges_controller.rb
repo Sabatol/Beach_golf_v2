@@ -15,7 +15,7 @@ class ChargesController < ApplicationController
     @price = @event.price
     amount = @price*100
 
-    if is_free?(@event)
+    if @event.price == 0
       Participation.create(user_id: current_user.id, event_id: @event.id)
       redirect_to event_path(@event.id)
     else
