@@ -10,6 +10,7 @@ class Event < ApplicationRecord
   validates :description, presence: true, length: { in: 20..1000 }
   validates :price, presence: true, inclusion: 0..1000
 
+  has_one_attached :picture
   belongs_to :user
   has_many :participations
   has_many :users, through: :participations

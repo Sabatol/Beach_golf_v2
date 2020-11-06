@@ -21,12 +21,26 @@
           <p> <strong>Prénom:</strong> <%= @user.first_name %> <br>
           <strong>Nom:</strong> <%= @user.last_name%> <br>
           <strong>Email:</strong> <%= @user.email%><br>
+      
         </div>
         <div class="tab-pane fade pr-5" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
         <br/>
+        <h3>Avatar actuel</h3>
+        <%if @user.avatar.attached?%>
+          <%= image_tag @user.avatar, size: "250x250", alt: 'avatar' %>
+        <%else%>
+          <img src="https://thispersondoesnotexist.com/image" width="250" height="250" class="d-inline-block align-center" alt="">
+        <%end%>
+        <h3>Changer d'avatar ?</h3>
+        <%= form_tag user_avatars_path(@user.id), multipart: true do %>
+          <%= file_field_tag :avatar %>
+          <%= submit_tag "mettre à jour" %>
+        <% end %>
         <br/>
         <br/>
-        <p><strong>Description :</strong> <%= @user.description%></p></div>
+        <p><strong>Description :</strong> <%= @user.description%></p>
+        <br/>
+        </div>
           <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
             <br/>
             <br/>
@@ -47,6 +61,7 @@
                   </div>
                 </div>
               <%end%>
-</body>
+        </body>
+
 
 

@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(title: params[:title], duration: params[:duration], start_date: params[:start_date], price: params[:price], location: params[:location], description: params[:description], user: current_user)
     if @event.save 
-      redirect_to event_path(@event.id)
+      redirect_to new_event_picture_path(@event.id)
     else
       redirect_to new_event_path
     end
@@ -19,9 +19,11 @@ class EventsController < ApplicationController
     id = params[:id]
     @event = Event.find(id)
     @end_date = @event.start_date + @event.duration*60
+
     if current_user
       @participation = @event.participations.find_by(user_id: current_user[:id], event_id: @event.id)
     end
+
     if current_user == @event.user
     @admin = @event.user
     end

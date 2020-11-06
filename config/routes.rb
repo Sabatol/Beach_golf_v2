@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'pictures/create'
   devise_for :users
   root to: 'events#index'
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    resources :avatars, only: [:create]
+  end
   resources :events do
+    resources :pictures, only: [:new, :create]
     resources :charges
     resources :participations, only: [:index, :create]
   end

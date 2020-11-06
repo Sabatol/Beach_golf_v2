@@ -2,7 +2,17 @@
     <div class="alert alert-danger">
       <strong>Ah !</strong> Tu t'es déjà inscris à l'évènement !
     </div> 
-  <% end %>
+<% end %>
+
+
+    <h3>Picture actuel</h3>
+      <%if @event.picture.attached?%>
+        <%= image_tag @event.picture, size: "250x250", alt: 'picture' %>
+      <%else%>
+        <p>=== Il n'y a pas encore d'picture lié à cet event ===</p>
+      <%end%>
+
+
 <div class="card">
   <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
@@ -16,16 +26,27 @@
   </div>
   <div class="card-footer">
     <small class="text-muted">Pour joindre le créateur de l'évènement, contactez  <%=@event.user.first_name%> <%=@event.user.last_name%> via <%=@event.user.email%></small>
-  <% if current_user %>
-    <% if @admin %>
-      <%= link_to "Gérer mon évènement", event_participations_path(params[:id]), :class =>"btn btn-outline-warning"  %> <br/>
-    <% elsif @participation %>
-      Vous êtes inscrit(e) à cet évènement ! 
-    <% elsif is_free?(@event) %>
-      <%= link_to "Participer gratuitement",  event_participations_path(event_id: params[:id]), :method =>'POST', :class =>"btn btn-outline-warning"  %> <br/>
-    <% else %>
-      <%= link_to "Participer", new_event_charge_path(params[:id]), :class =>"btn btn-outline-warning"  %> <br/>
+
+
+
+    <% if current_user %>
+  
+      <% if @admin %>
+        <%= link_to "Gérer mon évènement", event_participations_path(params[:id]), :class =>"btn btn-outline-warning"  %> <br/>
+      
+      <% elsif @participation %>
+        Vous êtes inscrit(e) à cet évènement ! 
+      
+      <% elsif is_free?(@event) %>
+        <%= link_to "Participer gratuitement",  event_participations_path(event_id: params[:id]), :method =>'POST', :class =>"btn btn-outline-warning"  %> <br/>
+      
+      <% else %>
+        <%= link_to "Participer", new_event_charge_path(params[:id]), :class =>"btn btn-outline-warning"  %> <br/>
+      <% end %>
+
     <% end %>
-  <% end %>
-  </div>
+    </div>
 </div>
+
+
+    

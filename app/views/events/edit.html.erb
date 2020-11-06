@@ -1,6 +1,6 @@
-<%= link_to "Détruire mon évènement", event_path(params[:id]), method: :delete, data:{confirm: "Tu veux vraiment supprimer ton évènement ?"}, :class =>"btn btn-outline-warning"  %> <br/>
-
 <div class="container">
+<%= link_to "Détruire mon évènement", event_path(params[:id]), method: :delete, data:{confirm: "Tu veux vraiment supprimer ton évènement ?"}, :class =>"btn btn-warning"  %> <br/>
+<%= link_to "Liste des participants", event_participations_path(params[:id]), :class =>"btn btn-outline-warning"  %> <br/>
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <br><br><br>
