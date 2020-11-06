@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'pictures/create'
   devise_for :users
   root to: 'events#index'
   resources :users, only: [:show, :edit, :update] do
