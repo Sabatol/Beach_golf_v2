@@ -1,0 +1,83 @@
+<body>
+  <!-- Page Content -->
+  <div class="container">
+    <div class="section">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Espace administrateur
+        <small>Evènements</small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">Utilisateurs</a>
+        </li>
+        <li class="breadcrumb-item active">Evènements</li>
+      </ol>
+
+      <div class="row">
+        <% @events.each_with_index do |event, i|%>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item text-center">
+          <div class="card h-100">
+            <% if event.picture.attached? %>
+              <%= image_tag event.picture, size: "150x150", alt: 'picture' %>
+            <% end %>            <div class="card-body">
+              <h4 class="card-title">
+                <%= event.title %>
+              </h4>
+              <p class="card-text">Lieu : <%=event.location%></p>
+              <p class="card-text">Prix : <%=event.price%>€</p>
+              <p class="card-text">Organisateur : <%=event.user.first_name%></p>
+
+              <button class="btn btn-light btn-block" type="button" data-toggle="collapse" data-target="#collapse<%i%>" aria-expanded="false" aria-controls="collapse<%i%>">
+                Voir la description
+              </button>
+              <div class="collapse" id="collapse<%i%>">
+                <div class="card card-body">
+                  <%=event.description%>
+                </div>
+              </div>
+              <br/>              
+              <%= link_to "Modifier l'évènement", edit_admins_event_path(event.id), :class =>"btn btn-primary btn-block"  %> <br/>
+              <%= link_to "Détruire l'évènement", admins_event_path(event.id), method: :delete, data:{confirm: "Supprimer cet évènement ?"}, :class =>"btn btn-danger btn-block"  %> <br/>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="section">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Portfolio 4
+        <small>Subheading</small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Utilisateurs</li>
+        <li class="breadcrumb-item">
+          <a href="index.html">Evènements</a>
+        </li>
+      </ol>
+
+      <div class="row">
+        <% @users.each_with_index do |user, i|%>
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item text-center">
+          <div class="card h-100">
+            <% if user.avatar.attached? %>
+              <%= image_tag user.avatar, size: "150x150", alt: 'avatar' %>
+            <% end %>            
+
+              <br/>              
+              <%= link_to "Modifier le profil", edit_admins_user_path(user.id), :class =>"btn btn-primary btn-block"  %> <br/>
+              <%= link_to "Effacer le profil", admins_user_path(user.id), method: :delete, data:{confirm: "Supprimer cet évènement ?"}, :class =>"btn btn-danger btn-block"  %> <br/>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!-- /.container -->
+
+</body>

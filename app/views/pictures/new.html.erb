@@ -1,11 +1,11 @@
-  <h3>Avatar actuel</h3>
+<div class="container d-flex justify-content-center" style="min-height:85vh" >
+  <div class="w-100 my-5 p-5 bg-dark text-white rounded text-center">
+    <h3>Avatar actuel</h3>
     <%if @event.picture.attached?%>
       <%= image_tag @event.picture, size: "250x250", alt: 'picture' %>
     <%else%>
       <p>=== Il n'y a pas encore d'picture lié à cet utilisateur ===</p>
     <%end%>
-    <h3>Changer d'picture ?</h3>
-    <%= form_tag event_pictures_path(@event.id), multipart: true do %>
-      <%= file_field_tag :picture %>
-      <%= submit_tag "mettre à jour" %>
-    <% end %>
+    <%= render 'shared/picture'%>
+  </div>
+</div>

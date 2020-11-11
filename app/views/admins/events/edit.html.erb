@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br>
+      <br>
+      <br>
+      <%= form_tag url_for(action: 'update'), method: "patch" do %>
+        <h1 class="h3 mb-3 font-weight-normal text-center">
+          Modification de l'èvènement
+        </h1>
+        <div class="form-group text-center">
+          <%= label_tag :title, "Intitulé" %><br />
+          <%= text_field_tag :title, @event.title %>
+        </div>
+        <div class="form-group text-center">
+          <%= label_tag :start_date, "Date de début" %><br />
+          <%= datetime_field_tag :start_date, @event.start_date %>
+        </div>
+        <div class="form-group text-center">
+          <%= label_tag :duration, "Durée de l'èvènement" %><br />
+          <%= text_field_tag :duration, @event.duration %>
+        </div>
+        <div class="form-group text-center">
+          <%= label_tag :price, "Combien ça coûte ?" %><br />
+          <%= text_field_tag :price, @event.price %>
+        </div>
+        <div class="form-group text-center">
+          <%= label_tag :description, "Descriptionus" %><br />
+          <%= text_area_tag :description, @event.description %>
+        </div>
+        <div class="form-group text-center">
+          <%= label_tag :location, "C'est où ?" %><br />
+          <%= text_field_tag :location, @event.location %>
+        </div>
+        <div class="actions mt-5">
+          <%= submit_tag "Modifier l'èvènement", class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

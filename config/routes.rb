@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-
   devise_for :users
   root to: 'events#index'
   resources :users, only: [:show, :edit, :update] do
     resources :avatars, only: [:create]
   end
+
+  namespace :admins do
+    root to: 'admins#index'
+    resources :events, :users
+  end
+
   resources :events do
     resources :pictures, only: [:new, :create]
     resources :charges

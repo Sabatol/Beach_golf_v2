@@ -1,0 +1,14 @@
+<div class="container p-3 m-3">
+  <h3 class="m-3">Changer d'avatar ?</h3>
+  <%= form_tag event_pictures_path(@event.id), multipart: true do %>
+    <div class="input-group mb-3 d-flex justify-content-center">
+      <div class="btn btn-secondary">
+        <%= file_field_tag :avatar, class: "custom-file" %>
+      </div>
+      <div class="input-group-append">
+        <%= submit_tag "mettre à jour", class: "btn btn-info" %>
+      </div>
+    </div>
+  <% end %>
+  <br/>
+</div>

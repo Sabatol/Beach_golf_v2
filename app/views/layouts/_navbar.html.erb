@@ -1,0 +1,37 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <%= link_to "Accueil", root_path, :class =>"navbar-brand" %>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <div class="d-flex justify-content-end">
+          <%= link_to "Mon espace admin", admins_root_path, :class =>"nav-link" %>
+          <% if current_user %>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Mon profil
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to "Mon profil", user_path(current_user.id), :class =>"dropdown-item" %>
+                <%= link_to "Editer mon profil", edit_user_path(current_user.id), :class =>"dropdown-item" %>
+                <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, data:{confirm: "Tu veux vraiment te déconnecter ?"}, :class =>"dropdown-item" %>
+              </div>
+            </div>
+          <% else %>
+            <div class="dropdown">
+              <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Se connecter/S'inscrire
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to "S'inscrire", new_user_registration_path, :class =>"dropdown-item" %>
+                <%= link_to "Se connecter", new_user_session_path, :class =>"dropdown-item" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>

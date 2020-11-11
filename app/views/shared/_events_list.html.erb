@@ -1,0 +1,18 @@
+<div class="container my-5 pr-0 d-flex justify-content-around flex-wrap">
+  <% @events.each do |event|%>
+    <div class="card p-2 m-2 text-white bg-dark" style="width: 15rem;">
+      <% if event.picture.attached? %>
+        <%= image_tag event.picture, style: "max-width: 100%; max-height: 100%;", alt: 'picture' %>
+      <% end %>
+      <div class="card-body text-center">
+        <h4 class="card-title">
+          <%= event.title %>
+        </h4>
+        <p class="card-text"><%=event.price%> €</p>
+        <p class="card-text"><%=event.location%></p>
+        <p class="card-text">Démarre le : <%=event.start_date.strftime('%d/%m/%Y %H:%M')%></p>
+        <%= link_to "#{event.participations.count} participants", event_path(event.id), :class =>"btn btn-primary"  %>
+      </div>
+    </div>
+  <% end %>
+</div>
